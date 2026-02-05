@@ -21,7 +21,7 @@ END: PDF-only contact -->
 
 ## Professional Summary
 
-DevOps and Platform Engineer with deep experience in containerization, Kubernetes, CI/CD automation, and hybrid cloud/on-prem architectures. Proven ability to design, deploy, and operate scalable infrastructure across enterprise and startup environments. DockerCon 2016 presenter with strong communication and cross-team collaboration skills.
+Software Engineer with deep experience in Java (Spring Boot) and Node.js microservice and web application development, technical leadership, containerization, Kubernetes, CI/CD automation, and hybrid cloud/on-prem architectures. Proven ability to design, implement, and deploy scalable applications across enterprise and startup environments. DockerCon 2016 presenter with strong communication and cross-team collaboration skills.
 
 ---
 
@@ -52,9 +52,18 @@ The PDF version of this resume is generated automatically by a public GitHub Act
 
 ---
 
+### Saviynt - Software Engineer
+*April 2022 - January 2023*
+
+- Developed and maintained Java (Spring Boot) microservices for Saviynt's SaaS authentication and authorization platform.
+- Deployed Java (Spring Boot) microservices to AWS EC2.
+
+---
+
 ### Kroger — Software Engineering Manager
 *February 2013 – April 2022*
 
+- Implemented and maintained Kroger's e-commerce platform including the development and deployment of Java (Spring Boot) microservices and React.js-powered web applications (initially Angular) that enabled grocery pickup and delivery.
 - Led Core Engineering, a cross-organizational enablement team that partnered with product teams to modernize applications for cloud deployments and to implement best practices such as containerization, CI/CD pipelines, and monitoring.
 - Led large-scale migrations including:
   - Migrating on-prem deployments to cloud and on-prem Kubernetes clusters.
@@ -62,7 +71,15 @@ The PDF version of this resume is generated automatically by a public GitHub Act
   - Migrating CI/CD pipelines from GitLab CI and TeamCity to GitHub Actions.
 - Automated build and deployment pipelines across multiple platforms.
 - Led early container adoption and platform standardization initiatives.
-- Collaborated with engineering teams to improve reliability, performance, and scalability.
+- Collaborated with engineering teams across the organization to improve reliability, performance, testability, and scalability.
+
+---
+
+### Cardinal Solutions — Software Engineer
+*January 2006 – February 2013*
+
+- Led other engineers as a Team Lead in Cardinal's Java Practice.
+- Designed, implemented, and deployed Java services and web applications for a variety of clients including Kroger and Fidelity.
 
 ---
 
@@ -90,9 +107,9 @@ END: PDF-only presentation -->
 
 ## Technical Skills
 
+**Languages & Scripting:** Java (Spring Boot), Node.js, React.js, Angular, TypeScript, Go, Python, Bash 
 **Cloud & Automation:** AWS, Azure, Terraform, Google Cloud  
 **Containers & Orchestration:** Docker, Kubernetes (EKS), Helm  
-**CI/CD:** GitHub Actions, GitLab CI, Flux, Jenkins  
-**Languages & Scripting:** Node.js, TypeScript, Go, Java, Python, Bash  
+**CI/CD:** GitHub Actions, GitLab CI, Flux, Jenkins   
 **Monitoring & Observability:** Prometheus, Grafana, ELK  
 **Platforms:** Linux, Hybrid Cloud / On-Prem
