@@ -1,5 +1,5 @@
 # Brett Timperman
-**DevOps / Cloud Engineer**  
+**Software Engineer**  
 Cincinnati, OH  
 
 <!-- BEGIN: GitHub-only contact (emoji) -->
