@@ -1,0 +1,16 @@
+% header.tex
+\usepackage{fontspec}
+\usepackage{hyperref}
+
+\setmainfont{Noto Sans}
+\setmonofont{Noto Sans Mono}
+
+% Symbol font for dingbats that Noto Sans may not include in Alpine
+\newfontfamily\SymbolFont{DejaVu Sans}
+
+\newcommand{\IconEnvelope}{{\SymbolFont ✉}}
+\newcommand{\IconPhone}{{\SymbolFont ☎}}
+\newcommand{\IconVideo}{{\SymbolFont ▶}}
+
+\newcommand{\IconLinkedIn}{\textsf{\textbf{in}}}
+\newcommand{\IconGitHub}{\textsf{\textbf{GH}}}

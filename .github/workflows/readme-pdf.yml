@@ -1,0 +1,93 @@
+name: Generate README PDF
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/readme-pdf.yml
+      - scripts/process_blocks.sh
+      - header.tex
+      - README.md
+
+permissions:
+  contents: write
+
+jobs:
+  generate-pdf:
+    name: Generate RESUME.pdf
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Generate PDF (LuaLaTeX + GitHub-ish fonts + emoji)
+        run: |
+          docker run --rm \
+            --entrypoint /bin/sh \
+            -v "${PWD}:/data" \
+            -w /data \
+            pandoc/latex:latest \
+            -c '
+              set -e
+
+              echo "== OS info =="
+              (cat /etc/os-release || true)
+              echo "== Installing fonts =="
+
+              if command -v apt-get >/dev/null 2>&1; then
+                apt-get update
+                apt-get update && apt-get install -y --no-install-recommends \
+                  fontconfig \
+                  fonts-noto \
+                  fonts-dejavu \
+                  texlive \
+                  texlive-latex-base \
+                  texlive-latex-recommended
+                rm -rf /var/lib/apt/lists/*
+              elif command -v apk >/dev/null 2>&1; then
+                apk add --no-cache \
+                  fontconfig \
+                  font-noto \
+                  font-dejavu \
+                  texlive \
+                  texmf-dist \
+                  texmf-dist-latex
+              else
+                echo "No supported package manager found (apt-get/apk)."
+                exit 1
+              fi
+
+              fc-cache -f || true
+
+              echo "== Adding PDF-only blocks and removing GitHub-only blocks =="
+              ./scripts/process_blocks.sh README.md README.pdf.md
+
+              echo "== Building PDF with LuaLaTeX =="
+              pandoc README.pdf.md \
+                --pdf-engine=lualatex \
+                -H header.tex \
+                -V mainfont="Noto Sans" \
+                -V monofont="Noto Sans Mono" \
+                -V fontsize=11pt \
+                -V geometry:margin=1in \
+                -o RESUME.pdf
+
+              ls -la RESUME.pdf
+            '
+      - name: Verify output exists
+        run: |
+          ls -la
+          test -f RESUME.pdf
+
+      - name: Commit PDF
+        run: |
+          if ! git status --porcelain -- RESUME.pdf | grep -q .; then
+            echo "No changes to commit."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add RESUME.pdf
+          git commit -m "chore: update RESUME PDF from README.md"
+          git push
